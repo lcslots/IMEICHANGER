@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLDT HAXX AND TIPS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e1e1e;
+            padding: 10px;
+            color: white;
+        }
+        .header img {
+            height: 60px;
+        }
+        .header .modem-pics img {
+            height: 200px;
+            margin-left:10px;
+            cursor: pointer;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        input, button, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            width: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        #progressBar {
+            width: 100%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        #progressBar div {
+            height: 100%;
+            width: 0;
+            background-color: #28a745;
+            transition: width 0.5s ease-in-out;
+        }
+        .quote {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #555;
+            font-style: italic;
+        }
+        .quote-text {
+            margin: 20px;
+        }
+        .countdown {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .promo-notes {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="PLDT Logo">
+        <div class="modem-pics">
+            <a href="https://s.shopee.ph/4AkTafeAia" target="_blank"><img src="h153.PNG" alt="H153 Modem"></a>
+            <a href="https://s.shopee.ph/4q0ANvRxTX" target="_blank"><img src="h155.PNG" alt="H155 Modem"></a>
+        </div>
+        <h1>PLDT HAXX AND TIPS</h1>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Change IMEI</h2>
+            <select id="modemChoice">
+                <option value="H153">PLDTHome H153</option>
+                <option value="H155">PLDTHome H155</option>
+            </select>
+            <input type="text" id="macAddress" placeholder="Enter MAC Address">
+            <input type="text" id="imei" placeholder="Enter New IMEI">
+            <button id="changeImeiBtn">Change IMEI</button>
+        </div>
+
+        <div class="promo-notes">
+            <div class="card-title">ANNOUNCEMENT TIPS!</div>
+            <div class="card-content">
+                <p><strong>Why Some Promos May Not Work:</strong></p>
+                <p>Some internet promos (like NSD) may not work on PLDT modems, even with signal, due to restrictions set by the ISP (Smart). These promos are intended for personal use only and cannot be used on 5G modems.</p>
+                <p><strong>Recommended Solution:</strong> Use promos such as UNLIFAM1299 (SMARTBRO PLDT HOME SIM), which are compatible with PLDT modems. If you have a Smart/Sun/TNT SIM with UNLIDATA (like UNLIDATA649), this will work as it is not restricted for personal use.</p>
+            </div>
+        </div>
+
+        <div id="quoteSection" class="quote">
+            <div id="quoteText" class="quote-text"></div>
+        </div>
+    </div>
+
+    <div id="imeiChangeModal" class="modal">
+        <div class="modal-content">
+            <h2>IMEI Change in Progress...</h2>
+            <div id="progressBar">
+                <div id="progress"></div>
+            </div>
+            <p id="imeiStatus" style="display: none;">IMEI already exists. Try again.</p>
+            <button id="retryBtn" style="display: none;" onclick="retryProcess()">Try Again</button>
+            <p id="cooldownText"></p>
+        </div>
+    </div>
+
+    <script>
+        // Motivational Quotes
+        const quotes = [
+            "To the people modifying their 5G modems with six antennas, your next upgrade is probably adding a satellite dish. Calm down, it's WiFi, not a space station.",
+            "You’re complaining about slow internet speeds, but you’re the reason the router is smoking. Maybe it's not the modem—maybe it's you.",
+            "If you think adding 10 external antennas will give you unlimited speed, I suggest you take it up with NASA. WiFi isn’t a satellite broadcast, buddy.",
+            "Oh, you’re trying to break the internet with your H153/H155? Don’t worry, it’s already broken. It’s just your attitude that’s slow.",
+            "Keep putting those extra antennas, and maybe you’ll actually connect to another planet’s WiFi. Keep trying though!",
+            "You think you’re upgrading your modem by putting more antennas, but trust me, the only thing getting upgraded is your ego.",
+            "The only thing faster than your internet is your imagination. But sadly, neither will work with a H153 or H155.",
+            "Stop trying to hack your modem and just enjoy the WiFi. If it’s slow, it’s probably not because of your router, it’s because of your expectations.",
+            "People who modify their modems with six antennas probably think 5G means they can stream Netflix in another galaxy.",
+            "We get it, you’re addicted to speed. But putting 10 antennas on your H155 won’t make it faster. You might be better off upgrading your attitude.",
+            "If only your WiFi had as many connections as your excuses. Maybe then you wouldn’t need 10 antennas on your H153.",
+            "Adding external antennas to your H155 is like putting a spoiler on a bicycle. It doesn’t make it faster, but it does look ridiculous.",
+            "Your H153 is not a Ferrari. Stop trying to make it go 1000 mph by adding more antennas. It’s still a modem.",
+            "You keep upgrading your modem’s antennas, but have you tried upgrading your WiFi plan? Just a thought.",
+            "The more antennas you add, the more you’ll realize: your modem wasn’t the problem. Maybe your internet plan was all along.",
+            "Modifying your H153/H155 isn’t the solution. Maybe the problem is that you don’t know how to properly set up your WiFi. We all start somewhere.",
+            "You’re not going to become the WiFi king by putting 20 antennas on your modem. It’s still a 5G router, not a spaceship.",
+            "If you think adding antennas will solve your internet problems, you might as well start stacking books on your modem too. It’s all about ‘the weight’ right?",
+            "You’re not getting faster WiFi by adding 6 antennas. But hey, keep trying to hack your modem. At least it’s giving you something to do.",
+            "Let me guess, you think more antennas equal more speed? Try turning off your modem and actually reading the manual first.",
+            "The more antennas you add, the more you’ll realize: your modem wasn’t the problem. Maybe your internet plan was all along."
+        ];
+
+        function showQuote() {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('quoteText').innerText = randomQuote;
+        }
+
+        let cooldownTime = 0; // in seconds
+        let attempts = 0; // Track how many times user tries
+
+        function showCooldown() {
+            cooldownTime = 86400; // 24 hours in seconds
+            const cooldownInterval = setInterval(function() {
+                if (cooldownTime <= 0) {
+                    clearInterval(cooldownInterval);
+                    document.getElementById('cooldownText').innerText = '';
+                } else {
+                    const hours = Math.floor(cooldownTime / 3600);
+                    const minutes = Math.floor((cooldownTime % 3600) / 60);
+                    document.getElementById('cooldownText').innerText = `Cooldown: ${hours}h ${minutes}m remaining`;
+                    cooldownTime--;
+                }
+            }, 1000);
+        }
+
+        function startCalibration() {
+            let progress = 0;
+            const progressBar = document.getElementById('progress');
+            const imeiStatus = document.getElementById('imeiStatus');
+            const retryBtn = document.getElementById('retryBtn');
+            
+            const calibrationInterval = setInterval(function() {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(calibrationInterval);
+                    imeiStatus.style.display = 'block';
+                    retryBtn.style.display = 'inline-block';
+                    showCooldown();
+                    attempts++;
+                    if (attempts > 2) {
+                        cooldownTime = 86400; // Reset to 24h if user exceeds max attempts
+                    }
+                }
+            }, 500);
+        }
+
+        function retryProcess() {
+            document.getElementById('imei').value = '';
+            attempts = 0; // Reset attempts
+            document.getElementById('imeiChangeModal').style.display = 'none';
+            setTimeout(function() {
+                window.open('https://lcslots.github.io/shyciexyrian', '_blank');
+            }, 5000);
+        }
+
+        document.getElementById("changeImeiBtn").addEventListener("click", function() {
+            const imei = document.getElementById("imei").value;
+            const mac = document.getElementById("macAddress").value;
+            
+            if (!/^[0-9]{15}$/.test(imei)) {
+                alert("IMEI must be 15 digits.");
+                return;
+            }
+            if (!/^[0-9A-F]{12}$/.test(mac)) {
+                alert("MAC Address should be 12 hexadecimal characters.");
+                return;
+            }
+
+            document.getElementById("imeiChangeModal").style.display = "flex";
+            startCalibration();
+        });
+
+        window.onload = function() {
+            showQuote();
+        };
+    </script>
+</body>
+</html>
