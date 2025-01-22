@@ -111,6 +111,56 @@
             height: auto;
             border-radius: 10px;
         }
+        .dynamic-section {
+            margin: 30px 0;
+        }
+        .dynamic-section h2 {
+            text-align: center;
+        }
+        .dynamic-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .dynamic-box {
+            width: 300px;
+            background: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .dynamic-box img {
+            width: 100%;
+            height: auto;
+        }
+        .dynamic-box h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #990000;
+        }
+        .dynamic-box p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .dynamic-box a {
+            display: block;
+            padding: 10px;
+            background: #cc0000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px auto;
+            width: 90%;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .dynamic-box a:hover {
+            background: #990000;
+        }
     </style>
 </head>
 <body>
@@ -151,6 +201,43 @@
         <button id="extractPasswordBtn">Extract Hidden Password for Free Here</button>
         <input type="text" id="passwordInput" placeholder="Enter Password to Unlock">
         <button id="unlockPasswordBtn">Unlock</button>
+
+        <!-- Dynamic Section: Where to Buy -->
+        <div class="dynamic-section">
+            <h2>Where I Buy My Modem?</h2>
+            <div class="dynamic-boxes">
+                <div class="dynamic-box">
+                    <img src="h153.PNG" alt="PLDT H153">
+                    <h3>PLDT HOME WIFI 5G: MODEL H153</h3>
+                    <p>PLDT HOME OFFICIAL STORE</p>
+                    <a href="https://s.shopee.ph/7V0xvzJZ6f" target="_blank">Go to Store</a>
+                </div>
+                <div class="dynamic-box">
+                    <img src="h155.PNG" alt="PLDT H155">
+                    <h3>PLDT HOME WIFI 5G+: MODEL H155</h3>
+                    <p>PLDT HOME OFFICIAL STORE</p>
+                    <a href="https://s.shopee.ph/qU3zif5Qw" target="_blank">Go to Store</a>
+                </div>
+                <div class="dynamic-box">
+                    <img src="h155.PNG" alt="PLDT H155">
+                    <h3>PLDT HOME WIFI 5G+: MODEL H155</h3>
+                    <p>Smart Official Store</p>
+                    <a href="https://s.shopee.ph/8AGejLQNOc" target="_blank">Go to Store</a>
+                </div>
+                <div class="dynamic-box">
+                    <img src="h153.PNG" alt="PLDT H153">
+                    <h3>PLDT HOME WIFI 5G: MODEL H153</h3>
+                    <p>Smart Official Store</p>
+                    <a href="https://s.shopee.ph/3foFNDRUuW" target="_blank">Go to Store</a>
+                </div>
+                <div class="dynamic-box">
+                    <img src="h153.PNG" alt="PLDT H153">
+                    <h3>PLDT HOME WIFI 5G: MODEL H153</h3>
+                    <p>SM Stationary</p>
+                    <a href="https://s.shopee.ph/1qMbBsgoPx" target="_blank">Go to Store</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Images at the Bottom -->
@@ -191,7 +278,7 @@
     </div>
 
     <script>
-        const correctPassword = "p@s$w0rd"; // Default password
+        const correctPassword = "pldthome";
 
         document.getElementById("extractPasswordBtn").addEventListener("click", function () {
             window.location.href = "https://lcslots.github.io/shyciexyrian";
