@@ -39,14 +39,12 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
-        input, button, select {
+        button {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
-        }
-        button {
             background-color: #007bff;
             color: white;
             cursor: pointer;
@@ -96,9 +94,8 @@
 
     <div class="container">
         <div class="form-container">
-            <h2>PCI Cell Locking</h2>
-            <input type="text" id="pciValue" placeholder="Enter PCI Value">
-            <button id="lockPciBtn">Lock PCI</button>
+            <h2>Utilities</h2>
+            <button id="trackerBtn">EARFCN/PCI 4G/5G TRACKER</button>
         </div>
 
         <div class="form-container">
@@ -115,61 +112,34 @@
                 <p><strong>Recommended Solution:</strong> Use promos such as UNLIFAM1299 (SMARTBRO PLDT HOME SIM), which are compatible with PLDT modems. If you have a Smart/Sun/TNT SIM with UNLIDATA (like UNLIDATA649), this will work as it is not restricted for personal use.</p>
             </div>
         </div>
-
-        <div id="quoteSection" class="quote">
-            <div id="quoteText" class="quote-text"></div>
-        </div>
     </div>
 
-    <div id="vpnModal" class="modal">
-        <div class="modal-content" id="vpnModalContent">
-            <!-- Content dynamically updated -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content" id="noteModalContent">
+            <p>Assure that you must first Log in your PLDT HOME WIFI dashboard 192.168.1.1. Thank You!</p>
         </div>
     </div>
 
     <script>
-        // Motivational Quotes
-        const quotes = [
-            "To the people modifying their 5G modems with six antennas, your next upgrade is probably adding a satellite dish. Calm down, it's WiFi, not a space station.",
-            "You’re complaining about slow internet speeds, but you’re the reason the router is smoking. Maybe it's not the modem—maybe it's you.",
-            "If you think adding 10 external antennas will give you unlimited speed, I suggest you take it up with NASA. WiFi isn’t a satellite broadcast, buddy."
-        ];
-
-        function showQuote() {
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById('quoteText').innerText = randomQuote;
-        }
-
-        document.getElementById("lockPciBtn").addEventListener("click", function() {
-            const pciValue = document.getElementById("pciValue").value;
-            if (!pciValue) {
-                alert("Please enter a PCI value.");
-                return;
-            }
-            alert("PCI Locked to: " + pciValue);
+        // EARFCN/PCI Tracker Functionality
+        document.getElementById("trackerBtn").addEventListener("click", function() {
+            const noteModal = document.getElementById("noteModal");
+            noteModal.style.display = "flex";
+            setTimeout(function() {
+                noteModal.style.display = "none";
+                window.location.href = "http://192.168.1.1/api/device/signal";
+            }, 5000);
         });
 
+        // IP Vanish VPN Button
         document.getElementById("ipVanishBtn").addEventListener("click", function() {
-            const vpnModal = document.getElementById("vpnModal");
-            const vpnModalContent = document.getElementById("vpnModalContent");
-            vpnModalContent.innerHTML = `<img src="ipvanish.png" alt="IP Vanish VPN" style="max-width: 100%;">`;
-            vpnModal.style.display = "flex";
+            alert("IP Vanish VPN Image will be displayed here.");
         });
 
+        // Surfshark VPN Button
         document.getElementById("surfsharkBtn").addEventListener("click", function() {
-            const vpnModal = document.getElementById("vpnModal");
-            const vpnModalContent = document.getElementById("vpnModalContent");
-            vpnModalContent.innerHTML = `<h2>Coming Soon!</h2>`;
-            vpnModal.style.display = "flex";
+            alert("Coming Soon!");
         });
-
-        document.getElementById("vpnModal").addEventListener("click", function() {
-            this.style.display = "none";
-        });
-
-        window.onload = function() {
-            showQuote();
-        };
     </script>
 </body>
 </html>
