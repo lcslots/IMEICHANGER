@@ -15,6 +15,13 @@
             padding: 20px;
             color: #fff;
             text-align: center;
+            position: relative;
+        }
+        .header img {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            height: 60px;
         }
         .header h1 {
             font-size: 24px;
@@ -92,14 +99,28 @@
             background: #990000;
             color: #fff;
         }
+        .images-bottom {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .images-bottom img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
+    <!-- Header with Logo -->
     <div class="header">
+        <img src="logo.png" alt="PLDT Logo">
         <h1>PLDT Home H155/H153 Haxx&Tips</h1>
     </div>
 
     <div class="container">
+        <!-- Announcement Section -->
         <div class="announcement">
             <h2>Announcement Tips 2025</h2>
             <p>
@@ -115,44 +136,29 @@
             </p>
         </div>
 
+        <!-- Utilities Section -->
         <h2>Utilities</h2>
         <button id="trackerBtn">EARFCN/PCI 4G/5G TRACKER</button>
 
+        <!-- VPN Options -->
         <h2>VPN Options</h2>
         <button id="ipVanishBtn">IP Vanish VPN</button>
         <button id="surfsharkBtn">Surfshark VPN</button>
 
+        <!-- Password Extraction Section -->
         <h2>Extract Hidden Password</h2>
         <button id="extractPasswordBtn">Extract Hidden Password for Free Here</button>
         <input type="text" id="passwordInput" placeholder="Enter Password to Unlock">
         <button id="unlockPasswordBtn">Unlock</button>
     </div>
 
-    <div id="noteModal" class="modal">
-        <div class="modal-content">
-            <p>Assure that you must first log in to your PLDT HOME WIFI dashboard at 192.168.1.1. Thank you!</p>
-        </div>
+    <!-- Images at the Bottom -->
+    <div class="images-bottom">
+        <img src="h153.PNG" alt="H153">
+        <img src="h155.PNG" alt="H155">
     </div>
 
-    <div id="ipVanishModal" class="modal">
-        <div class="modal-content">
-            <img src="ipvanish.png" alt="IP Vanish VPN">
-        </div>
-    </div>
-
-    <div id="surfsharkModal" class="modal">
-        <div class="modal-content">
-            <img src="surfshark.png" alt="Surfshark VPN">
-        </div>
-    </div>
-
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <h2>Successfully Cracked</h2>
-            <img src="ipvanish2.png" alt="Cracked Password">
-        </div>
-    </div>
-
+    <!-- Footer -->
     <div class="footer">
         © 2025 Haxx&Tips. All Rights Reserved.
     </div>
