@@ -71,14 +71,9 @@
             width: 50%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .quote {
-            font-size: 20px;
-            margin-top: 20px;
-            color: #555;
-            font-style: italic;
-        }
-        .quote-text {
-            margin: 20px;
+        .modal-content img {
+            max-width: 100%;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -103,42 +98,59 @@
             <button id="ipVanishBtn">IP Vanish VPN</button>
             <button id="surfsharkBtn">Surfshark VPN</button>
         </div>
-
-        <div class="promo-notes">
-            <div class="card-title">ANNOUNCEMENT TIPS!</div>
-            <div class="card-content">
-                <p><strong>Why Some Promos May Not Work:</strong></p>
-                <p>Some internet promos (like NSD) may not work on PLDT modems, even with signal, due to restrictions set by the ISP (Smart). These promos are intended for personal use only and cannot be used on 5G modems.</p>
-                <p><strong>Recommended Solution:</strong> Use promos such as UNLIFAM1299 (SMARTBRO PLDT HOME SIM), which are compatible with PLDT modems. If you have a Smart/Sun/TNT SIM with UNLIDATA (like UNLIDATA649), this will work as it is not restricted for personal use.</p>
-            </div>
-        </div>
     </div>
 
+    <!-- Modal for EARFCN/PCI Tracker -->
     <div id="noteModal" class="modal">
-        <div class="modal-content" id="noteModalContent">
+        <div class="modal-content">
             <p>Assure that you must first Log in your PLDT HOME WIFI dashboard 192.168.1.1. Thank You!</p>
         </div>
     </div>
 
+    <!-- Modal for IP Vanish VPN -->
+    <div id="ipVanishModal" class="modal">
+        <div class="modal-content">
+            <img src="ipvanish.png" alt="IP Vanish VPN">
+        </div>
+    </div>
+
+    <!-- Modal for Surfshark VPN -->
+    <div id="surfsharkModal" class="modal">
+        <div class="modal-content">
+            <img src="surfshark.png" alt="Surfshark VPN">
+        </div>
+    </div>
+
     <script>
-        // EARFCN/PCI Tracker Functionality
-        document.getElementById("trackerBtn").addEventListener("click", function() {
+        // EARFCN/PCI Tracker Button
+        document.getElementById("trackerBtn").addEventListener("click", function () {
             const noteModal = document.getElementById("noteModal");
             noteModal.style.display = "flex";
-            setTimeout(function() {
+            setTimeout(function () {
                 noteModal.style.display = "none";
                 window.location.href = "http://192.168.1.1/api/device/signal";
             }, 5000);
         });
 
         // IP Vanish VPN Button
-        document.getElementById("ipVanishBtn").addEventListener("click", function() {
-            alert("IP Vanish VPN Image will be displayed here.");
+        document.getElementById("ipVanishBtn").addEventListener("click", function () {
+            const ipVanishModal = document.getElementById("ipVanishModal");
+            ipVanishModal.style.display = "flex";
         });
 
         // Surfshark VPN Button
-        document.getElementById("surfsharkBtn").addEventListener("click", function() {
-            alert("Coming Soon!");
+        document.getElementById("surfsharkBtn").addEventListener("click", function () {
+            const surfsharkModal = document.getElementById("surfsharkModal");
+            surfsharkModal.style.display = "flex";
+        });
+
+        // Close modals when clicking outside the modal content
+        document.querySelectorAll(".modal").forEach(modal => {
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
         });
     </script>
 </body>
