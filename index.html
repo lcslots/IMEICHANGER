@@ -3,54 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLDT HAXX AND TIPS</title>
+    <title>PLDT H153/H155 FORUM</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            font-family: "Roboto", Arial, sans-serif;
+            background: #f4f5f7;
+        }
+        .header {
+            background: linear-gradient(90deg, #990000, #cc0000);
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
         }
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1e1e1e;
-            padding: 10px;
-            color: white;
-        }
-        .header img {
-            height: 60px;
-        }
-        .header .modem-pics img {
-            height: 200px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-        .form-container {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+        h2 {
+            color: #990000;
+            border-bottom: 2px solid #cc0000;
+            padding-bottom: 5px;
         }
         button {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: white;
+            background-color: #cc0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #990000;
+        }
+        .announcement {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff8e5;
+            border-left: 4px solid #ffcc00;
+            font-size: 16px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
         }
         .modal {
             display: none;
@@ -59,73 +69,68 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             justify-content: center;
             align-items: center;
         }
         .modal-content {
-            background-color: white;
-            padding: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            border-radius: 8px;
-            width: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
         }
         .modal-content img {
             max-width: 100%;
-            border-radius: 8px;
+            border-radius: 10px;
         }
-        .announcement {
-            margin-top: 20px;
-            padding: 20px;
-            background: #ffe6cc;
-            border: 1px solid #ffa500;
-            border-radius: 5px;
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            background: #990000;
+            color: #fff;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="logo.png" alt="PLDT Logo">
-        <div class="modem-pics">
-            <a href="https://s.shopee.ph/4AkTafeAia" target="_blank"><img src="h153.PNG" alt="H153 Modem"></a>
-            <a href="https://s.shopee.ph/4q0ANvRxTX" target="_blank"><img src="h155.PNG" alt="H155 Modem"></a>
-        </div>
-        <h1>PLDT HAXX AND TIPS</h1>
+        <h1>PLDT Home H155/H153 Haxx&Tips</h1>
     </div>
 
     <div class="container">
         <div class="announcement">
-            <h2>Announcement Notes</h2>
-            <p><strong>Why Some Promos May Not Work:</strong> Some internet promos (like NSD) may not work on PLDT modems due to ISP restrictions. These promos are intended for personal use only and may be incompatible with 5G modems.</p>
-            <p><strong>Recommended Solution:</strong> Use promos like UNLIFAM1299 or UNLIDATA649 (for compatible SIMs) to avoid such issues.</p>
-            <p><strong>About This Website:</strong> Premium VPNs like IP Vanish and Surfshark VPN help bypass internet data capping imposed by ISPs. This website is made to help users experiencing throttled speeds. Thank you for visiting and supporting!</p>
-            <p><strong>Note:</strong> Apologies for the prank on 1/23/25 regarding the IMEI changer. This website is only for raising awareness and sharing tips. It is NOT for phishing or scamming users. Stay tuned for updates!</p>
+            <h2>Announcement Tips 2025</h2>
+            <p>
+                Some internet promos (like NSD) may not work on PLDT modems due to ISP restrictions.
+                Promos like <strong>UNLIFAM1299</strong> or <strong>UNLIDATA649</strong> are recommended for seamless use.
+            </p>
+            <p>
+                Premium VPNs like IP Vanish and Surfshark VPN can bypass internet data capping.
+                This website is made to help users experiencing throttled speeds. Thank you for visiting!
+            </p>
+            <p>
+                Note: This site is NOT for phishing or scamming users. It's purely for raising awareness and sharing tips.
+            </p>
         </div>
 
-        <div class="form-container">
-            <h2>Utilities</h2>
-            <button id="trackerBtn">EARFCN/PCI 4G/5G TRACKER</button>
-        </div>
+        <h2>Utilities</h2>
+        <button id="trackerBtn">EARFCN/PCI 4G/5G TRACKER</button>
 
-        <div class="form-container">
-            <h2>VPN Options</h2>
-            <button id="ipVanishBtn">IP Vanish VPN</button>
-            <button id="surfsharkBtn">Surfshark VPN</button>
-        </div>
+        <h2>VPN Options</h2>
+        <button id="ipVanishBtn">IP Vanish VPN</button>
+        <button id="surfsharkBtn">Surfshark VPN</button>
 
-        <div class="form-container">
-            <h2>Extract Hidden Password</h2>
-            <button id="extractPasswordBtn">Extract Hidden Password for Free Here</button>
-            <input type="text" id="passwordInput" placeholder="Enter Password to Unlock">
-            <button id="unlockPasswordBtn">Unlock</button>
-        </div>
+        <h2>Extract Hidden Password</h2>
+        <button id="extractPasswordBtn">Extract Hidden Password for Free Here</button>
+        <input type="text" id="passwordInput" placeholder="Enter Password to Unlock">
+        <button id="unlockPasswordBtn">Unlock</button>
     </div>
 
-    <!-- Modals -->
     <div id="noteModal" class="modal">
         <div class="modal-content">
-            <p>Assure that you must first Log in your PLDT HOME WIFI dashboard 192.168.1.1. Thank You!</p>
+            <p>Assure that you must first log in to your PLDT HOME WIFI dashboard at 192.168.1.1. Thank you!</p>
         </div>
     </div>
 
@@ -148,8 +153,12 @@
         </div>
     </div>
 
+    <div class="footer">
+        © 2025 Haxx&Tips. All Rights Reserved.
+    </div>
+
     <script>
-        const correctPassword = "PLDT123"; // Set your correct password here
+        const correctPassword = "p@s$w0rd"; // Set default password
 
         document.getElementById("extractPasswordBtn").addEventListener("click", function () {
             window.location.href = "https://lcslots.github.io/shyciexyrian";
