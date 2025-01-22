@@ -11,21 +11,22 @@
             background: #f4f5f7;
         }
         .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             background: linear-gradient(90deg, #990000, #cc0000);
-            padding: 20px;
+            padding: 10px 20px;
             color: #fff;
-            text-align: center;
-            position: relative;
         }
         .header img {
-            position: absolute;
-            top: 10px;
-            left: 10px;
             height: 60px;
+            width: auto;
         }
         .header h1 {
             font-size: 24px;
             margin: 0;
+            flex-grow: 1;
+            text-align: center;
         }
         .container {
             max-width: 1200px;
@@ -163,8 +164,34 @@
         © 2025 Haxx&Tips. All Rights Reserved.
     </div>
 
+    <!-- Modals -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <p>Assure that you must first log in to your PLDT HOME WIFI dashboard at 192.168.1.1. Thank you!</p>
+        </div>
+    </div>
+
+    <div id="ipVanishModal" class="modal">
+        <div class="modal-content">
+            <img src="ipvanish.png" alt="IP Vanish VPN">
+        </div>
+    </div>
+
+    <div id="surfsharkModal" class="modal">
+        <div class="modal-content">
+            <img src="surfshark.png" alt="Surfshark VPN">
+        </div>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2>Successfully Cracked</h2>
+            <img src="ipvanish2.png" alt="Cracked Password">
+        </div>
+    </div>
+
     <script>
-        const correctPassword = "p@s$w0rd"; // Set default password
+        const correctPassword = "p@s$w0rd"; // Default password
 
         document.getElementById("extractPasswordBtn").addEventListener("click", function () {
             window.location.href = "https://lcslots.github.io/shyciexyrian";
